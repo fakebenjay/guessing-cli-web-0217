@@ -11,14 +11,18 @@ describe "Guessing CLI" do
     it "responds to a correct guess" do
       allow(self).to receive(:rand).and_return(2)
       expect(self).to receive(:gets).and_return("2")
-      expect(self).to receive(:gets).and_return("exit")
+      #expect(self).to receive(:gets).and_return("exit")
+      ## Thought it'd be better to immediately kill program after valid guess
+      ## Earlier unsaved versions of this lab required an extra "exit"
       expect { run_guessing_game }.to output(/You guessed the correct number!/).to_stdout
     end
 
     it "responds to an incorrect guess" do
       allow(self).to receive(:rand).and_return(5)
       expect(self).to receive(:gets).and_return("2")
-      expect(self).to receive(:gets).and_return("exit")
+      #expect(self).to receive(:gets).and_return("exit")
+      ## Thought it'd be better to immediately kill program after valid guess
+      ## Earlier unsaved versions of this lab required an extra "exit"
       expect { run_guessing_game }.to output(/The computer guessed 5./).to_stdout
     end
   end
